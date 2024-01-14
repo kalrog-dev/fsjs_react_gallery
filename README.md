@@ -1,3 +1,3 @@
-# FSJS React Gallery
+# FSJS - React Gallery
 
 In progress
