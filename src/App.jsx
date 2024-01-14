@@ -1,11 +1,17 @@
 import apiKey from './config'
+
+import { Search, Navigation, Gallery } from './widgets'
+import { gallery, search, navigation } from './data'
+
 import './App.css'
 
 const App = () => {
   return (
-    <>
-      Test title
-    </>
+    <div className='container'>
+      <Search data={search} />
+      <Navigation data={navigation} />
+      <Gallery data={gallery} />
+    </div>
   )
 }
 
