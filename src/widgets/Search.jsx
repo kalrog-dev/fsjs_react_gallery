@@ -1,11 +1,15 @@
 import { search } from '../assets'
 
 const Input = ({ data }) => {
+  if (!data) {
+    return null
+  }
+
   const { name, label, placeholder } = data
 
   return (
     <form className='search-form'>
-      <label className='sr-only' for={name}>
+      <label className='sr-only' htmlFor={name}>
         {label}
       </label>
       <div className='input-group'>

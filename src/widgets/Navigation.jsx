@@ -1,4 +1,8 @@
 const Navigation = ({ data }) => {
+  if (!data) {
+    return null
+  }
+  
   const { links } = data
 
   return (

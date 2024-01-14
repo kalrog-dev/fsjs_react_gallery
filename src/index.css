@@ -4,12 +4,6 @@ body {
   color: #3f4850;
 }
 
-h2 {
-  font-size: 2em;
-  margin: 52px 0 40px;
-  text-transform: capitalize;
-}
-
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -28,6 +22,12 @@ a {
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+.title {
+  font-size: 2em;
+  margin: 52px 0 40px;
+  text-transform: capitalize;
 }
 
 .search-form {
