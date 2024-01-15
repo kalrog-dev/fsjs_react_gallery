@@ -1,5 +1,5 @@
 const Heading = (props) => {
-  if (!props) {
+  if (!props || !Object.keys(props).length > 0) {
     return null
   }
 
