@@ -5,6 +5,10 @@ const Image = (props) => {
 
   const { src, alt } = props
 
+  if (!src || !alt) {
+    return null
+  }
+
   return (
     <li>
       <img src={src} alt={alt} />

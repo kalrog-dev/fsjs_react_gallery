@@ -5,6 +5,10 @@ const Heading = (props) => {
 
   const { as: As, variant, children } = props
 
+  if (!As || !variant || !children) {
+    return null
+  }
+
   return <As className={variant}>{children}</As>
 }
 
