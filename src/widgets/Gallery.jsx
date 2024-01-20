@@ -4,12 +4,16 @@ const Gallery = ({ data }) => {
   if (!data) {
     return null
   }
-  
+
   const { title, images } = data
 
   return (
     <div className='photo-container'>
-      {title && <Heading as='h2' variant='title'>{title}</Heading>}
+      {title && (
+        <Heading as='h2' variant='title'>
+          {title}
+        </Heading>
+      )}
       <ul>
         {images &&
           images.map((image) => {

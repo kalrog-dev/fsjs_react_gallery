@@ -1,3 +1,5 @@
+import { isMissingProp } from '../utils'
+
 const Heading = (props) => {
   if (!props || !Object.keys(props).length > 0) {
     return null
@@ -5,7 +7,7 @@ const Heading = (props) => {
 
   const { as: As, variant, children } = props
 
-  if (!As || !variant || !children) {
+  if (isMissingProp(As, variant, children)) {
     return null
   }
 

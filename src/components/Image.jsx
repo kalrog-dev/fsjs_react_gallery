@@ -1,3 +1,5 @@
+import { isMissingProp } from '../utils'
+
 const Image = (props) => {
   if (!props || !Object.keys(props).length > 0) {
     return null
@@ -5,7 +7,7 @@ const Image = (props) => {
 
   const { src, alt } = props
 
-  if (!src || !alt) {
+  if (isMissingProp(src, alt)) {
     return null
   }
 
