@@ -1,14 +1,11 @@
-import { useParams } from 'react-router-dom'
-
 import { Heading, Image } from '@components'
 
-const Gallery = ({ data, images, isLoading }) => {
+const Gallery = ({ data, images }) => {
   if (!data) {
     return null
   }
 
   const { title } = data
-  const { query } = useParams()
 
   return (
     <div className='photo-container'>
@@ -18,9 +15,8 @@ const Gallery = ({ data, images, isLoading }) => {
         </Heading>
       )}
       <ul>
-        {images &&
+        {!!images?.length &&
           images.map((image) => {
-            console.log(image)
             const { id, secret, server, title } = image
 
             return (

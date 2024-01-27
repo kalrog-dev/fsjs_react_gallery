@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { fetchJSON } from '@utils'
 
 import apiKey from '../config'
 
-const useGetImages = (apiUrl) => {
+const useGetImages = (query) => {
   const [isLoading, setIsLoading] = useState(false)
   const [images, setImages] = useState([])
+  const navigate = useNavigate()
 
   const handleSuccess = (results) => {
     setImages(results)
@@ -15,11 +18,11 @@ const useGetImages = (apiUrl) => {
     throw new Error(error.message)
   }
 
-  const getImages = async () => {
+  const getImages = async (query) => {
     setIsLoading(true)
+    const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
 
     try {
-      const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=sunsets&per_page=24&format=json&nojsoncallback=1`
       const data = await fetchJSON(apiUrl)
       const results = data.photos.photo
       handleSuccess(results)
@@ -30,6 +33,12 @@ const useGetImages = (apiUrl) => {
     }
   }
 
+  const handleSubmit = (event, value) => {
+    event.preventDefault()
+    getImages(value)
+    navigate(`/search/${value}`)
+  }
+
   useEffect(() => {
     getImages()
   }, [])
@@ -37,6 +46,7 @@ const useGetImages = (apiUrl) => {
   return {
     images,
     isLoading,
+    handleSubmit,
   }
 }
 

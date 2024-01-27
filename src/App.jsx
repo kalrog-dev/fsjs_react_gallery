@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useParams } from 'react-router-dom'
 
 import { gallery, search, navigation } from '@data'
 import { useGetImages } from '@hooks'
@@ -7,11 +7,12 @@ import { Search, Navigation, Gallery } from '@widgets'
 import './App.css'
 
 const App = () => {
-  const { images, isLoading } = useGetImages()
+  const { query } = useParams()
+  const { images, isLoading, handleSubmit } = useGetImages(query)
 
   return (
     <div className='container'>
-      <Search data={search} />
+      <Search data={search} handleSubmit={handleSubmit} />
       <Navigation data={navigation} />
       <Routes>
         <Route path='/' element={<Navigate replace to='/cats' />} />
