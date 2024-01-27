@@ -1,6 +1,41 @@
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./assets/fonts/poppins-light.woff2') format('woff2');;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./assets/fonts/poppins-regular.woff2') format('woff2');;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./assets/fonts/poppins-medium.woff2') format('woff2');;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./assets/fonts/poppins-semibold.woff2') format('woff2');;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./assets/fonts/poppins-bold.woff2') format('woff2');;
+}
+
 body {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #3f4850;
 }
 
@@ -26,6 +61,7 @@ a {
 
 .title {
   font-size: 2em;
+  font-weight: 600;
   margin: 52px 0 40px;
   text-transform: capitalize;
 }
@@ -45,7 +81,6 @@ a {
 }
 
 .search-form button {
-  outline: none;
   background-color: #438bbd;
   border: none;
   padding: 0px 15px;
@@ -54,14 +89,26 @@ a {
 }
 
 input {
-  font-size: 1em;
+  font-family: inherit;
+  font-size: 1rem;
   width: 100%;
+  color: #666;
+  font-weight: 500;
   background-color: #edeff0;
   padding: 10px 15px;
   border: 3px solid #d7dbdf;
   border-right: none;
   border-radius: 0.35em 0 0 0.35em;
   outline: none;
+}
+
+input:focus {
+  border: 3px solid #438bbd66;
+  border-right: 0;
+}
+
+input::placeholder {
+  color: #a6a6a6;
 }
 
 .main-nav li {
@@ -71,9 +118,10 @@ input {
 
 .main-nav a {
   display: block;
+  font-weight: 500;
   background: #438bbd;
-  border-radius: 3px;
-  padding: 5px;
+  border-radius: 4px;
+  padding: 0.3em 0.7em;
   color: #fff;
 }
 
@@ -129,12 +177,13 @@ input {
   }
 
   .main-nav ul {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 1.5em;
     justify-content: center;
   }
 
   .main-nav li {
     margin: 10px;
-    width: 100px;
   }
 }
