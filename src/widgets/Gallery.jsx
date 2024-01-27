@@ -1,6 +1,6 @@
-import { Heading, Image } from '@components'
+import { Heading, Image, Loader } from '@components'
 
-const Gallery = ({ data, images }) => {
+const Gallery = ({ data, images, isLoading }) => {
   if (!data) {
     return null
   }
@@ -9,25 +9,29 @@ const Gallery = ({ data, images }) => {
 
   return (
     <div className='photo-container'>
-      {title && (
-        <Heading as='h2' variant='title'>
-          {title}
-        </Heading>
-      )}
-      <ul>
-        {!!images?.length &&
-          images.map((image) => {
-            const { id, secret, server, title } = image
+      {!isLoading && !!images?.length && (
+        <>
+          {title && (
+            <Heading as='h2' variant='title'>
+              {title}
+            </Heading>
+          )}
+          <ul>
+            {images.map((image) => {
+              const { id, secret, server, title } = image
 
-            return (
-              <Image
-                key={id}
-                src={`https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`}
-                alt={title}
-              />
-            )
-          })}
-      </ul>
+              return (
+                <Image
+                  key={id}
+                  src={`https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`}
+                  alt={title}
+                />
+              )
+            })}
+          </ul>
+        </>
+      )}
+      {isLoading && <Loader />}
     </div>
   )
 }

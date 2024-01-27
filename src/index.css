@@ -155,6 +155,32 @@ input::placeholder {
   transform: scale(1.65);
 }
 
+.loader-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.spinner {
+  position: relative;
+  top: 30vh;
+  width: 60px;
+  height: 60px;
+  margin-inline: auto;
+  border: 3px solid transparent;
+  border-top-color: #438bbd;
+  border-radius: 50%;
+  animation: spin infinite 1s linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media only screen and (max-width: 767px) {
   body {
     padding-top: 2em;
