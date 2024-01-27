@@ -1,16 +1,22 @@
-import apiKey from './config'
-
-import { Search, Navigation, Gallery } from './widgets'
-import { gallery, search, navigation } from './data'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import './App.css'
+import apiKey from './config'
+import { gallery, search, navigation } from './data'
+import { Search, Navigation, Gallery } from './widgets'
 
 const App = () => {
   return (
     <div className='container'>
       <Search data={search} />
       <Navigation data={navigation} />
-      <Gallery data={gallery} />
+      <Routes>
+        <Route path='/' element={<Navigate replace to='/cats' />} />
+        <Route path='/cats' element={<p>cats</p>} />
+        <Route path='/dogs' element={<p>dogs</p>} />
+        <Route path='/computers' element={<p>computers</p>} />
+        <Route path='/search/:query' element={<Gallery data={gallery} />} />
+      </Routes>
     </div>
   )
 }

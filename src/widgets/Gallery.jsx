@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import { Heading, Image } from '../components'
 
 const Gallery = ({ data }) => {
@@ -6,6 +8,8 @@ const Gallery = ({ data }) => {
   }
 
   const { title, images } = data
+  const { query } = useParams()
+  console.log(query)
 
   return (
     <div className='photo-container'>

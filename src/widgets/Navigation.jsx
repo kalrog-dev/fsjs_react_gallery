@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom'
+
 const Navigation = ({ data }) => {
   if (!data) {
     return null
@@ -15,9 +17,9 @@ const Navigation = ({ data }) => {
 
             return (
               <li key={id}>
-                <a href={url} target={target}>
+                <NavLink to={url} target={target}>
                   {title}
-                </a>
+                </NavLink>
               </li>
             )
           })}
