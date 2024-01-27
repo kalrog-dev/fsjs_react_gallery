@@ -1,15 +1,14 @@
 import { useParams } from 'react-router-dom'
 
-import { Heading, Image } from '@/components'
+import { Heading, Image } from '@components'
 
-const Gallery = ({ data }) => {
+const Gallery = ({ data, images, isLoading }) => {
   if (!data) {
     return null
   }
 
-  const { title, images } = data
+  const { title } = data
   const { query } = useParams()
-  console.log(query)
 
   return (
     <div className='photo-container'>
@@ -21,9 +20,16 @@ const Gallery = ({ data }) => {
       <ul>
         {images &&
           images.map((image) => {
-            const { id, src, alt } = image
+            console.log(image)
+            const { id, secret, server, title } = image
 
-            return <Image key={id} src={src} alt={alt} />
+            return (
+              <Image
+                key={id}
+                src={`https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`}
+                alt={title}
+              />
+            )
           })}
       </ul>
     </div>

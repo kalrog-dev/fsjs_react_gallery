@@ -3,11 +3,12 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/assets/*": ["./assets/*"],
-      "@/components/*": ["./components/*"],
-      "@/data/*": ["./data/*"],
-      "@/utils/*": ["./utils/*"],
-      "@/widgets/*": ["./widgets/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@widgets/*": ["./src/widgets/*"],
     },
   },
 }

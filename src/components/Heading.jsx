@@ -1,4 +1,4 @@
-import { isMissingProp } from '@/utils'
+import { isMissingProp } from '@utils'
 
 const Heading = (props) => {
   if (!props || !Object.keys(props).length > 0) {

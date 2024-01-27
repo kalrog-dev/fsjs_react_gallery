@@ -1,4 +1,4 @@
-import { search } from '@/assets/icons'
+import { search } from '@assets/icons'
 
 const Input = ({ data }) => {
   if (!data) {
