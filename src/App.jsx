@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-import './App.css'
+import { gallery, search, navigation } from '@/data'
+import { Search, Navigation, Gallery } from '@/widgets'
+
 import apiKey from './config'
-import { gallery, search, navigation } from './data'
-import { Search, Navigation, Gallery } from './widgets'
+import './App.css'
 
 const App = () => {
   return (

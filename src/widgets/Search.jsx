@@ -1,4 +1,4 @@
-import { search } from '../assets'
+import { search } from '@/assets/icons'
 
 const Input = ({ data }) => {
   if (!data) {
@@ -15,7 +15,7 @@ const Input = ({ data }) => {
       <div className='input-group'>
         <input
           id={name}
-          type='search'
+          type='text'
           name={name}
           placeholder={placeholder}
           required

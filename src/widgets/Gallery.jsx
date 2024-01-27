@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-import { Heading, Image } from '../components'
+import { Heading, Image } from '@/components'
 
 const Gallery = ({ data }) => {
   if (!data) {
