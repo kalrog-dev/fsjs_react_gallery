@@ -40,13 +40,28 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
 
   const handleSubmit = (event, value) => {
     event.preventDefault()
-    getImages('cats', value)
+    setCurrentPage(1)
+    getImages(value)
     navigate(`/search/${value}`)
   }
 
   const handlePageButtonClick = (event, query) => {
     const nextPage = Number(event.currentTarget.textContent)
     setCurrentPage(nextPage)
+    getImages(query, nextPage)
+  }
+
+  const handleCaretButtonClick = (type, query) => () => {
+    let nextPage;
+
+    if (type === 'next') {
+      nextPage = currentPage + 1
+      setCurrentPage(nextPage)
+    } else {
+      nextPage = currentPage - 1
+      setCurrentPage(nextPage)
+    }
+
     getImages(query, nextPage)
   }
 
@@ -62,6 +77,7 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
     isLoading,
     handleSubmit,
     handlePageButtonClick,
+    handleCaretButtonClick,
   }
 }
 

@@ -162,8 +162,31 @@ input::placeholder {
   user-select: none;
 }
 
+.caret-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 0.75em;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+.caret-button svg {
+  width: 20px;
+  height: 20px;
+  color: #3f4850;
+}
+
+.caret-button:disabled svg {
+  color: silver;
+  pointer-events: none;
+}
+
 .page-button {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 40px;
   padding: 0.6em 1.1em;
   margin-inline: 0.15em;

@@ -10,6 +10,7 @@ const Gallery = ({
   totalPages,
   isLoading,
   handlePageButtonClick,
+  handleCaretButtonClick,
 }) => {
   if (!data) {
     return null
@@ -46,6 +47,7 @@ const Gallery = ({
             currentPage={currentPage}
             totalPages={totalPages}
             handlePageButtonClick={handlePageButtonClick}
+            handleCaretButtonClick={handleCaretButtonClick}
           />
         </>
       )}

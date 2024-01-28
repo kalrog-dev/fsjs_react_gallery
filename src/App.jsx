@@ -16,6 +16,7 @@ const App = () => {
     isLoading,
     handleSubmit,
     handlePageButtonClick,
+    handleCaretButtonClick,
   } = useGetImages(resultsPerPage, initImages, initImageCount)
 
   const galleryJSX = (
@@ -27,6 +28,7 @@ const App = () => {
       totalPages={totalPages}
       isLoading={isLoading}
       handlePageButtonClick={handlePageButtonClick}
+      handleCaretButtonClick={handleCaretButtonClick}
     />
   )
 
