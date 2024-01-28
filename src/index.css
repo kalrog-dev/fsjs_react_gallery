@@ -155,6 +155,41 @@ input::placeholder {
   transform: scale(1.65);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+  user-select: none;
+}
+
+.page-button {
+  display: inline-block;
+  min-width: 40px;
+  padding: 0.6em 1.1em;
+  margin-inline: 0.15em;
+  font-family: inherit;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #3f4850;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.1s;
+}
+
+.page-button:disabled {
+  border: none;
+}
+
+.page-button-active,
+.page-button:hover:not(:disabled) {
+  background-color: #438bbd;
+  border-color: #438bbd;
+  color: #fff;
+}
+
 .loader-container {
   width: 100%;
   min-height: 100vh;

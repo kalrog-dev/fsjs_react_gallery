@@ -5,13 +5,18 @@ import { fetchJSON } from '@utils'
 
 import apiKey from '../config'
 
-const useGetImages = (query) => {
+const useGetImages = (query, resultsPerPage, initImages, initImageCount) => {
+  const [images, setImages] = useState(initImages)
+  const [imageCount, setImageCount] = useState(initImageCount)
+  const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [images, setImages] = useState([])
   const navigate = useNavigate()
 
-  const handleSuccess = (results) => {
-    setImages(results)
+  const totalPages = Math.ceil(imageCount / resultsPerPage)
+
+  const handleSuccess = (data) => {
+    setImages(data.photos.photo)
+    setImageCount(data.photos.total)
   }
 
   const handleError = (error) => {
@@ -20,12 +25,12 @@ const useGetImages = (query) => {
 
   const getImages = async (query) => {
     setIsLoading(true)
-    const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
+    const resultsPerPage = 12
+    const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=${resultsPerPage}&page=${currentPage}&format=json&nojsoncallback=1`
 
     try {
       const data = await fetchJSON(apiUrl)
-      const results = data.photos.photo
-      handleSuccess(results)
+      handleSuccess(data)
     } catch (error) {
       handleError(error)
     } finally {
@@ -45,6 +50,9 @@ const useGetImages = (query) => {
 
   return {
     images,
+    imageCount,
+    currentPage,
+    totalPages,
     isLoading,
     handleSubmit,
   }

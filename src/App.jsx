@@ -8,7 +8,15 @@ import './App.css'
 
 const App = () => {
   const { query } = useParams()
-  const { images, isLoading, handleSubmit } = useGetImages(query)
+  const { resultsPerPage, initImages, initImageCount } = gallery
+  const {
+    images,
+    imageCount,
+    currentPage,
+    totalPages,
+    isLoading,
+    handleSubmit,
+  } = useGetImages(query, resultsPerPage, initImages, initImageCount)
 
   return (
     <div className='container'>
@@ -22,7 +30,14 @@ const App = () => {
         <Route
           path='/search/:query'
           element={
-            <Gallery data={gallery} images={images} isLoading={isLoading} />
+            <Gallery
+              data={gallery}
+              images={images}
+              imageCount={imageCount}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              isLoading={isLoading}
+            />
           }
         />
       </Routes>

@@ -1,6 +1,8 @@
 const galleryConfig = {
   title: 'Results',
-  images: [
+  resultsPerPage: 12,
+  initImageCount: 4,
+  initImages: [
     {
       id: 1,
       src: 'https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg',

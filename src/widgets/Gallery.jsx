@@ -1,11 +1,18 @@
-import { Heading, Image, Loader } from '@components'
+import { Heading, Image, Loader, Pagination } from '@components'
 
-const Gallery = ({ data, images, isLoading }) => {
+const Gallery = ({
+  data,
+  images,
+  imageCount,
+  currentPage,
+  totalPages,
+  isLoading,
+}) => {
   if (!data) {
     return null
   }
 
-  const { title } = data
+  const { title, resultsPerPage, initImages, initImageCount } = data
 
   return (
     <div className='photo-container'>
@@ -29,6 +36,10 @@ const Gallery = ({ data, images, isLoading }) => {
               )
             })}
           </ul>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
         </>
       )}
       {isLoading && <Loader />}

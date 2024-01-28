@@ -1,6 +1,5 @@
 import { search } from '@assets/icons'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const Search = ({ data, handleSubmit }) => {
   if (!data) {
