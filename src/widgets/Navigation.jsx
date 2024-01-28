@@ -4,14 +4,13 @@ const Navigation = ({ data }) => {
   if (!data) {
     return null
   }
-  
+
   const { links } = data
 
   return (
     <nav className='main-nav'>
       <ul>
-        {links &&
-          links.length > 0 &&
+        {!!links?.length &&
           links.map((link) => {
             const { id, title, url, target } = link
 

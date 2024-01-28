@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { gallery, search, navigation } from '@data'
 import { useGetImages } from '@hooks'
@@ -7,7 +7,6 @@ import { Search, Navigation, Gallery } from '@widgets'
 import './App.css'
 
 const App = () => {
-  const { query } = useParams()
   const { resultsPerPage, initImages, initImageCount } = gallery
   const {
     images,
@@ -16,7 +15,20 @@ const App = () => {
     totalPages,
     isLoading,
     handleSubmit,
-  } = useGetImages(query, resultsPerPage, initImages, initImageCount)
+    handlePageButtonClick,
+  } = useGetImages(resultsPerPage, initImages, initImageCount)
+
+  const galleryJSX = (
+    <Gallery
+      data={gallery}
+      images={images}
+      imageCount={imageCount}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      isLoading={isLoading}
+      handlePageButtonClick={handlePageButtonClick}
+    />
+  )
 
   return (
     <div className='container'>
@@ -24,22 +36,10 @@ const App = () => {
       <Navigation data={navigation} />
       <Routes>
         <Route path='/' element={<Navigate replace to='/cats' />} />
-        <Route path='/cats' element={<p>cats</p>} />
-        <Route path='/dogs' element={<p>dogs</p>} />
-        <Route path='/computers' element={<p>computers</p>} />
-        <Route
-          path='/search/:query'
-          element={
-            <Gallery
-              data={gallery}
-              images={images}
-              imageCount={imageCount}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              isLoading={isLoading}
-            />
-          }
-        />
+        <Route path='/cats' element={galleryJSX} />
+        <Route path='/dogs' element={galleryJSX} />
+        <Route path='/computers' element={galleryJSX} />
+        <Route path='/search/:query' element={galleryJSX} />
       </Routes>
     </div>
   )

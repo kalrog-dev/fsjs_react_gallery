@@ -5,7 +5,7 @@ import { fetchJSON } from '@utils'
 
 import apiKey from '../config'
 
-const useGetImages = (query, resultsPerPage, initImages, initImageCount) => {
+const useGetImages = (resultsPerPage, initImages, initImageCount) => {
   const [images, setImages] = useState(initImages)
   const [imageCount, setImageCount] = useState(initImageCount)
   const [currentPage, setCurrentPage] = useState(1)
@@ -23,10 +23,10 @@ const useGetImages = (query, resultsPerPage, initImages, initImageCount) => {
     throw new Error(error.message)
   }
 
-  const getImages = async (query) => {
+  const getImages = async (query, page = currentPage) => {
     setIsLoading(true)
     const resultsPerPage = 12
-    const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=${resultsPerPage}&page=${currentPage}&format=json&nojsoncallback=1`
+    const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=${resultsPerPage}&page=${page}&format=json&nojsoncallback=1`
 
     try {
       const data = await fetchJSON(apiUrl)
@@ -40,8 +40,14 @@ const useGetImages = (query, resultsPerPage, initImages, initImageCount) => {
 
   const handleSubmit = (event, value) => {
     event.preventDefault()
-    getImages(value)
+    getImages('cats', value)
     navigate(`/search/${value}`)
+  }
+
+  const handlePageButtonClick = (event, query) => {
+    const nextPage = Number(event.currentTarget.textContent)
+    setCurrentPage(nextPage)
+    getImages(query, nextPage)
   }
 
   useEffect(() => {
@@ -55,6 +61,7 @@ const useGetImages = (query, resultsPerPage, initImages, initImageCount) => {
     totalPages,
     isLoading,
     handleSubmit,
+    handlePageButtonClick,
   }
 }
 

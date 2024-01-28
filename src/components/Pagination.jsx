@@ -5,9 +5,9 @@ const Pagination = (props) => {
     return null
   }
 
-  const { currentPage, totalPages } = props
+  const { query, currentPage, totalPages, handlePageButtonClick } = props
 
-  if (isMissingProp(currentPage, totalPages)) {
+  if (isMissingProp(query, currentPage, totalPages, handlePageButtonClick)) {
     return null
   }
 
@@ -29,7 +29,12 @@ const Pagination = (props) => {
             : 'page-button'
 
           return (
-            <button key={id} className={classNames} disabled={page === null}>
+            <button
+              key={id}
+              className={classNames}
+              disabled={page === null}
+              onClick={(e) => handlePageButtonClick(e, query)}
+            >
               {page ?? '...'}
             </button>
           )

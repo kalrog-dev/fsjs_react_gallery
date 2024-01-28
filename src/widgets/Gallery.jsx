@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import { Heading, Image, Loader, Pagination } from '@components'
 
 const Gallery = ({
@@ -7,10 +9,13 @@ const Gallery = ({
   currentPage,
   totalPages,
   isLoading,
+  handlePageButtonClick,
 }) => {
   if (!data) {
     return null
   }
+
+  const { query } = useParams()
 
   const { title, resultsPerPage, initImages, initImageCount } = data
 
@@ -20,7 +25,7 @@ const Gallery = ({
         <>
           {title && (
             <Heading as='h2' variant='title'>
-              {title}
+              {imageCount} {title}
             </Heading>
           )}
           <ul>
@@ -37,8 +42,10 @@ const Gallery = ({
             })}
           </ul>
           <Pagination
+            query={query}
             currentPage={currentPage}
             totalPages={totalPages}
+            handlePageButtonClick={handlePageButtonClick}
           />
         </>
       )}

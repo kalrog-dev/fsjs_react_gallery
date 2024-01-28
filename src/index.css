@@ -181,6 +181,7 @@ input::placeholder {
 
 .page-button:disabled {
   border: none;
+  pointer-events: none;
 }
 
 .page-button-active,
