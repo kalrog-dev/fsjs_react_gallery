@@ -65,9 +65,10 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
     getImages(query, nextPage)
   }
 
-  useEffect(() => {
-    getImages()
-  }, [])
+  const getStaticRouteImages = (query) => {
+    setCurrentPage(1)
+    getImages(query, 1)
+  }
 
   return {
     images,
@@ -78,6 +79,7 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
     handleSubmit,
     handlePageButtonClick,
     handleCaretButtonClick,
+    getStaticRouteImages,
   }
 }
 

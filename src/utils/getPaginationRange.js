@@ -17,12 +17,10 @@ const getPaginationRange = (currentPage, totalPages, innerPageCount) => {
     innerPages.sort((a, b) => a - b)
   } else {
     if (currentPage < innerPageCount) {
-      for (let i = 1; i <= innerPageCount; i++) {
+      for (let i = 1; (i <= innerPageCount && i < lastPage - 1); i++) {
         innerPages.push(1 + i)
       }
-    } 
-    
-    if (currentPage > lastPage - innerPageCount) {
+    } else if (currentPage > lastPage - innerPageCount) {
       for (let i = innerPageCount; i >= 1; i--) {
         innerPages.push(lastPage - i)
       }

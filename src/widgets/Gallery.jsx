@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom'
 
 import { Heading, Image, Loader, Pagination } from '@components'
+import { useEffect } from 'react'
 
 const Gallery = ({
   data,
+  defaultQuery,
   images,
   imageCount,
   currentPage,
@@ -11,14 +13,19 @@ const Gallery = ({
   isLoading,
   handlePageButtonClick,
   handleCaretButtonClick,
+  getStaticRouteImages,
 }) => {
   if (!data) {
     return null
   }
 
+  const { title, resultsPerPage, initImages, initImageCount } = data
+
   const { query } = useParams()
 
-  const { title, resultsPerPage, initImages, initImageCount } = data
+  useEffect(() => {
+    getStaticRouteImages(defaultQuery ?? query)
+  }, [defaultQuery])
 
   return (
     <div className='photo-container'>

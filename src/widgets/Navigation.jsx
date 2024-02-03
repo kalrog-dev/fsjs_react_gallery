@@ -1,18 +1,16 @@
 import { NavLink } from 'react-router-dom'
 
-const Navigation = ({ data }) => {
+const Navigation = ({ data, routes }) => {
   if (!data) {
     return null
   }
 
-  const { links } = data
-
   return (
     <nav className='main-nav'>
       <ul>
-        {!!links?.length &&
-          links.map((link) => {
-            const { id, title, url, target } = link
+        {!!routes?.length &&
+          routes.map((route) => {
+            const { id, title, url, target } = route
 
             return (
               <li key={id}>
