@@ -50,7 +50,7 @@ const Gallery = ({
             })}
           </ul>
           <Pagination
-            query={query}
+            query={query ?? defaultQuery}
             currentPage={currentPage}
             totalPages={totalPages}
             handlePageButtonClick={handlePageButtonClick}

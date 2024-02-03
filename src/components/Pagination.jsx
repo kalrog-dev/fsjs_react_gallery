@@ -13,6 +13,8 @@ const Pagination = (props) => {
     handleCaretButtonClick,
   } = props
 
+  console.log(props)
+
   if (
     isMissingProp(
       query,
