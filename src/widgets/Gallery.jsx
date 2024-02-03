@@ -1,7 +1,7 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Heading, Image, Loader, Pagination } from '@components'
-import { useEffect } from 'react'
 
 const Gallery = ({
   data,

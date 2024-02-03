@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@hooks'
 import { getPaginationRange, isMissingProp } from '@utils'
 
 const Pagination = (props) => {
@@ -13,8 +14,6 @@ const Pagination = (props) => {
     handleCaretButtonClick,
   } = props
 
-  console.log(props)
-
   if (
     isMissingProp(
       query,
@@ -27,7 +26,9 @@ const Pagination = (props) => {
     return null
   }
 
-  const innerPageCount = 7
+  const isMobile = useMediaQuery('md')
+  const innerPageCount = isMobile ? 3 : 7
+
   const paginationRange = getPaginationRange(
     currentPage,
     totalPages,

@@ -7,6 +7,7 @@
       "@components/*": ["./src/components/*"],
       "@data/*": ["./src/data/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@theme/*": ["./src/theme/*"],
       "@utils/*": ["./src/utils/*"],
       "@widgets/*": ["./src/widgets/*"],
     },
