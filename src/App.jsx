@@ -10,8 +10,8 @@ const App = ({ data }) => {
   if (!data) return null
 
   const { routes } = data
-
   const { resultsPerPage, initImages, initImageCount } = gallery
+
   const {
     images,
     imageCount,
@@ -24,7 +24,7 @@ const App = ({ data }) => {
     getStaticRouteImages,
   } = useGetImages(resultsPerPage, initImages, initImageCount)
 
-  const getGalleryJSX = (defaultQuery = null) => {
+  const galleryJSX = (defaultQuery = null) => {
     return (
       <Gallery
         data={gallery}
@@ -51,9 +51,9 @@ const App = ({ data }) => {
           routes.map((route) => {
             const { id, url, title } = route
 
-            return <Route key={id} path={url} element={getGalleryJSX(title)} />
+            return <Route key={id} path={url} element={galleryJSX(title)} />
           })}
-        <Route path='/search/:query' element={getGalleryJSX()} />
+        <Route path='/search/:query' element={galleryJSX()} />
       </Routes>
     </div>
   )
