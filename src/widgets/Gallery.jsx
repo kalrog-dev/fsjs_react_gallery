@@ -1,8 +1,8 @@
 import FsLightbox from 'fslightbox-react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
-import { Heading, Image, Loader, Pagination } from '@components'
+import { Heading, Image, Loader, Pagination, NotFound } from '@components'
 
 const Gallery = ({
   data,
@@ -20,7 +20,7 @@ const Gallery = ({
     return null
   }
 
-  const { title, resultsPerPage, initImages, initImageCount } = data
+  const { title, notFound } = data
 
   const [lightboxController, setLightboxController] = useState({
 		toggler: false,
@@ -35,6 +35,7 @@ const Gallery = ({
 	}
   
   const { query } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getStaticRouteImages(defaultQuery ?? query)
@@ -42,11 +43,13 @@ const Gallery = ({
 
   return (
     <div className='photo-container'>
+      {isLoading && <Loader />}
       {!isLoading && !!images?.length && (
         <>
           {title && (
             <Heading as='h2' variant='title'>
-              {imageCount} {title}
+              <span className='title-name'>{title}</span>
+              <span className='title-count'>{`(${imageCount})`}</span>
             </Heading>
           )}
           <ul>
@@ -76,12 +79,14 @@ const Gallery = ({
           />
         </>
       )}
-      {isLoading && <Loader />}
+      {!isLoading && !images?.length && (
+        navigate('/404', { replace: true })
+      )}
       <FsLightbox
         toggler={lightboxController.toggler}
         sources={images.map((image) => {
           const { id, secret, server } = image
-          return `https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`
+          return `https://live.staticflickr.com/${server}/${id}_${secret}_b.jpg`
         })}
         slide={lightboxController.slide + 1}
       />

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
+import { NotFound } from '@components'
 import { gallery, search, navigation } from '@data'
 import { useGetImages } from '@hooks'
 import { Search, Navigation, Gallery } from '@widgets'
@@ -9,8 +10,7 @@ import './App.css'
 const App = ({ data }) => {
   if (!data) return null
 
-  const { routes } = data
-  const { resultsPerPage, initImages, initImageCount } = gallery
+  const { routes, resultsPerPage } = data
 
   const {
     images,
@@ -22,7 +22,7 @@ const App = ({ data }) => {
     handlePageButtonClick,
     handleCaretButtonClick,
     getStaticRouteImages,
-  } = useGetImages(resultsPerPage, initImages, initImageCount)
+  } = useGetImages(resultsPerPage)
 
   const galleryJSX = (defaultQuery = null) => {
     return (
@@ -54,6 +54,16 @@ const App = ({ data }) => {
             return <Route key={id} path={url} element={galleryJSX(title)} />
           })}
         <Route path='/search/:query' element={galleryJSX()} />
+        <Route
+          path='/404'
+          element={
+            <NotFound
+              title={gallery.notFound.title}
+              description={gallery.notFound.description}
+            />
+          }
+        />
+        <Route path='*' element={<Navigate replace to='/404' />} />
       </Routes>
     </div>
   )

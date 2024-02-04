@@ -63,7 +63,16 @@ a {
   font-size: 2em;
   font-weight: 600;
   margin: 52px 0 40px;
-  text-transform: capitalize;
+}
+
+.title-name {
+  margin-right: 0.3em;
+}
+
+.title-count {
+  font-size: 0.75em;
+  font-weight: 500;
+  color: #3f4850bb;
 }
 
 .search-form {
@@ -133,7 +142,7 @@ input::placeholder {
 
 .photo-container ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1em;
 }
 
@@ -178,9 +187,12 @@ input::placeholder {
   color: #3f4850;
 }
 
+.caret-button:disabled {
+  pointer-events: none;
+}
+
 .caret-button:disabled svg {
   color: silver;
-  pointer-events: none;
 }
 
 .page-button {
@@ -237,6 +249,23 @@ input::placeholder {
   padding: 0;
   border: none;
   cursor: pointer;
+}
+
+.not-found {
+  display: grid;
+  gap: 1em;
+  margin-top: 52px;
+}
+
+.not-found > * {
+  margin-block: 0;
+}
+
+.not-found-icon {
+  height: 64px;
+  width: 64px;
+  margin-inline: auto;
+  color: #3f4850aa;
 }
 
 @keyframes spin {

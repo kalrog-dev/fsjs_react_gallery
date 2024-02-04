@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { fetchJSON } from '@utils'
 
 import apiKey from '../config'
 
-const useGetImages = (resultsPerPage, initImages, initImageCount) => {
-  const [images, setImages] = useState(initImages)
-  const [imageCount, setImageCount] = useState(initImageCount)
+const useGetImages = (resultsPerPage) => {
+  const [images, setImages] = useState([])
+  const [imageCount, setImageCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
@@ -25,7 +25,6 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
 
   const getImages = async (query, page = currentPage) => {
     setIsLoading(true)
-    const resultsPerPage = 12
     const apiUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=${resultsPerPage}&page=${page}&format=json&nojsoncallback=1`
 
     try {
@@ -40,6 +39,7 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
 
   const handleSubmit = (event, value) => {
     event.preventDefault()
+    if (value === '') return
     setCurrentPage(1)
     getImages(value)
     navigate(`/search/${value}`)
@@ -52,7 +52,7 @@ const useGetImages = (resultsPerPage, initImages, initImageCount) => {
   }
 
   const handleCaretButtonClick = (type, query) => () => {
-    let nextPage;
+    let nextPage
 
     if (type === 'next') {
       nextPage = currentPage + 1
