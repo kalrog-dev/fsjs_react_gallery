@@ -6,7 +6,7 @@ import { Heading, Image, Loader, Pagination } from '@components'
 
 const Gallery = ({
   data,
-  defaultQuery,
+  staticRouteQuery,
   images,
   imageCount,
   currentPage,
@@ -38,8 +38,8 @@ const Gallery = ({
   const navigate = useNavigate()
 
   useEffect(() => {
-    getStaticRouteImages(defaultQuery ?? query)
-  }, [defaultQuery])
+    getStaticRouteImages(staticRouteQuery ?? query)
+  }, [staticRouteQuery])
 
   useEffect(() => {
     if (!isLoading && !images?.length) {
@@ -77,7 +77,7 @@ const Gallery = ({
             })}
           </ul>
           <Pagination
-            query={query ?? defaultQuery}
+            query={query ?? staticRouteQuery}
             currentPage={currentPage}
             totalPages={totalPages}
             handlePageButtonClick={handlePageButtonClick}

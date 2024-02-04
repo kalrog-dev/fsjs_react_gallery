@@ -24,16 +24,16 @@ const App = ({ data }) => {
     getStaticRouteImages,
   } = useGetImages(resultsPerPage, initImages)
 
-  const galleryJSX = (defaultQuery = null) => {
+  const galleryJSX = (staticRouteQuery = null) => {
     return (
       <Gallery
         data={gallery}
-        defaultQuery={defaultQuery}
         images={images}
         imageCount={imageCount}
         currentPage={currentPage}
         totalPages={totalPages}
         isLoading={isLoading}
+        staticRouteQuery={staticRouteQuery}
         handlePageButtonClick={handlePageButtonClick}
         handleCaretButtonClick={handleCaretButtonClick}
         getStaticRouteImages={getStaticRouteImages}

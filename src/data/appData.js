@@ -33,7 +33,7 @@ const appData = {
     },
   ],
   notFound: {
-    title: 'No Results Found',
+    title: 'No results found',
     description: 'Your search did not return any results. Please try again.',
   }
 }
