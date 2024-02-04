@@ -5,8 +5,8 @@ import { fetchJSON } from '@utils'
 
 import apiKey from '../config'
 
-const useGetImages = (resultsPerPage) => {
-  const [images, setImages] = useState([])
+const useGetImages = (resultsPerPage, initImages) => {
+  const [images, setImages] = useState(initImages)
   const [imageCount, setImageCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(false)

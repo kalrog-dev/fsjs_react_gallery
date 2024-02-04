@@ -10,7 +10,7 @@ import './App.css'
 const App = ({ data }) => {
   if (!data) return null
 
-  const { routes, resultsPerPage } = data
+  const { routes, resultsPerPage, initImages } = data
 
   const {
     images,
@@ -22,7 +22,7 @@ const App = ({ data }) => {
     handlePageButtonClick,
     handleCaretButtonClick,
     getStaticRouteImages,
-  } = useGetImages(resultsPerPage)
+  } = useGetImages(resultsPerPage, initImages)
 
   const galleryJSX = (defaultQuery = null) => {
     return (

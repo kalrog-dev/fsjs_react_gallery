@@ -2,7 +2,7 @@ import FsLightbox from 'fslightbox-react'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { Heading, Image, Loader, Pagination, NotFound } from '@components'
+import { Heading, Image, Loader, Pagination } from '@components'
 
 const Gallery = ({
   data,
@@ -20,7 +20,7 @@ const Gallery = ({
     return null
   }
 
-  const { title, notFound } = data
+  const { title } = data
 
   const [lightboxController, setLightboxController] = useState({
 		toggler: false,
@@ -40,6 +40,12 @@ const Gallery = ({
   useEffect(() => {
     getStaticRouteImages(defaultQuery ?? query)
   }, [defaultQuery])
+
+  useEffect(() => {
+    if (!isLoading && !images?.length) {
+      navigate('/404', { replace: true })
+    }
+  }, [isLoading, images])
 
   return (
     <div className='photo-container'>
@@ -78,9 +84,6 @@ const Gallery = ({
             handleCaretButtonClick={handleCaretButtonClick}
           />
         </>
-      )}
-      {!isLoading && !images?.length && (
-        navigate('/404', { replace: true })
       )}
       <FsLightbox
         toggler={lightboxController.toggler}
