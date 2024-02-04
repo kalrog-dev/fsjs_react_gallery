@@ -1,10 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-const Navigation = ({ data, routes }) => {
-  if (!data) {
-    return null
-  }
-
+const Navigation = ({ routes }) => {
   return (
     <nav className='main-nav'>
       <ul>

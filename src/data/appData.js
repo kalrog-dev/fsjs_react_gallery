@@ -32,6 +32,10 @@ const appData = {
       alt: 'alt',
     },
   ],
+  notFound: {
+    title: 'No Results Found',
+    description: 'Your search did not return any results. Please try again.',
+  }
 }
 
 export default appData
