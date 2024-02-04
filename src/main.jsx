@@ -9,7 +9,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/fsjs_react_gallery'>
+    <BrowserRouter>
       <App data={appData} />
     </BrowserRouter>
   </React.StrictMode>
