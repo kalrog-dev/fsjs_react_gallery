@@ -15,6 +15,5 @@ export default defineConfig({
       { find: '@widgets', replacement: path.resolve(__dirname, '/src/widgets/') },
     ],
   },
-  base: "/fsjs_react_gallery",
   plugins: [react()],
 })
