@@ -17,4 +17,4 @@ The list below includes features that have been required (*). The rest has been 
 Preview: 
 ![React Gallery](./src/assets/fsjs_react_gallery.png)
 
-Live URL: 
+Live URL: [Solution](https://fsjs-react-gallery.netlify.app/)
